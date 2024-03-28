@@ -35,7 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Commit transaction
         mysqli_commit($mysqli);
-        echo "Registration successful!";
+        
+        // Redirect to index.php after successful signup
+        header("Location: index.php");
+        exit();
     } catch (Exception $e) {
         mysqli_rollback($mysqli);
         echo "Error: " . $e->getMessage();
