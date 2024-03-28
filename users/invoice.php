@@ -27,29 +27,26 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Display invoice details
-       
-  // Display invoice details
-echo "Date: " . $row['invoice_date'] . "<br>";
-echo "Status: " . $row['invoice_status'] . "<br>";
-echo "Technician: " . $row['employee_first_name'] . " " . $row['employee_last_name'] . "<br>";
-echo "Task: " . $row['task_name'] . "<br>";
-echo "Description: " . $row['task_description'] . "<br>";
-echo "Price: $" . $row['task_price'] . "<br>";
+        echo "Date: " . $row['invoice_date'] . "<br>";
+        echo "Status: " . $row['invoice_status'] . "<br>";
+        echo "Technician: " . $row['employee_first_name'] . " " . $row['employee_last_name'] . "<br>";
+        echo "Task: " . $row['task_name'] . "<br>";
+        echo "Description: " . $row['task_description'] . "<br>";
+        echo "Price: $" . $row['task_price'] . "<br>";
 
-// Check if task's estimated time is less than 1 hour
-if ($row['task_estimate_time'] < 60) {
-    echo "Estimated Time: " . $row['task_estimate_time'] . " mins<br><br>";
-} else {
-    // Convert estimated time to hours if it's more than 1 hour
-    $hours = floor($row['task_estimate_time'] / 60);
-    $minutes = $row['task_estimate_time'] % 60;
-    echo "Estimated Time: " . $hours . " hours ";
-    if ($minutes > 0) {
-        echo $minutes . " mins";
-    }
-    echo "<br><br>";
-}
-
+        // Check if task's estimated time is less than 1 hour
+        if ($row['task_estimate_time'] < 60) {
+            echo "Estimated Time: " . $row['task_estimate_time'] . " mins<br><br>";
+        } else {
+            // Convert estimated time to hours if it's more than 1 hour
+            $hours = floor($row['task_estimate_time'] / 60);
+            $minutes = $row['task_estimate_time'] % 60;
+            echo "Estimated Time: " . $hours . " hours ";
+            if ($minutes > 0) {
+                echo $minutes . " mins";
+            }
+            echo "<br><br>";
+        }
     }
 
     // Calculate total price
@@ -65,12 +62,17 @@ if ($row['task_estimate_time'] < 60) {
     $totalResult = $totalStmt->get_result();
     $totalRow = $totalResult->fetch_assoc();
 
-    echo "Total Price: $" . $totalRow['total_price'];
+    // Display total price if invoices are found
+    if ($totalRow['total_price'] !== null) {
+        echo "Total Price: $" . $totalRow['total_price'];
+    }
 } else {
     echo "No invoices found.";
 }
 
 $stmt->close();
-$totalStmt->close();
+if (isset($totalStmt)) {
+    $totalStmt->close();
+}
 $mysqli->close();
 ?>
