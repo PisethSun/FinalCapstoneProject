@@ -1,14 +1,34 @@
 <?php
 session_start();
 include '../db.php'; // Adjust path as necessary
-
+function displayNoInvoicesFound() {
+    echo "No invoices found.";
+}
 // Ensure user is logged in and has a customer ID in session
-if (!isset($_SESSION['loggedin']) || !isset($_SESSION['customer_id'])) {
+// Check if the user is logged in
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: ../login.php"); // Redirect to login page if not logged in
     exit;
 }
 
-$customer_id = $_SESSION['customer_id'];
+$customerName = "Guest"; // Default name in case something goes wrong
+
+if(isset($_SESSION['customer_id'])) {
+    $customer_id = $_SESSION['customer_id'];
+
+    // Fetch the customer's name from the database
+    $stmt = $mysqli->prepare("SELECT customer_first_name, customer_last_name FROM customer WHERE customer_id = ?");
+    $stmt->bind_param("i", $customer_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+        // Concatenate the first and last name
+        $customerName = $row['customer_first_name'];
+    }
+
+    $stmt->close();
+}
 
 // Fetch invoice details including technician, task, and price
 $query = "SELECT i.invoice_id, i.invoice_date, i.invoice_status, e.employee_first_name, e.employee_last_name, t.task_name, t.task_description, t.task_price, t.task_estimate_time
@@ -66,8 +86,6 @@ if ($result->num_rows > 0) {
     if ($totalRow['total_price'] !== null) {
         echo "Total Price: $" . $totalRow['total_price'];
     }
-} else {
-    echo "No invoices found.";
 }
 
 $stmt->close();
@@ -76,3 +94,31 @@ if (isset($totalStmt)) {
 }
 $mysqli->close();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your Dashboard</h1>
+        <nav>
+            <ul>
+                <li>Hi, <?php echo htmlspecialchars($customerName); ?></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="invoice.php">Invoices</a></li>
+                <li><a href="reservation.php">Reservations</a></li>
+                <!-- You can add more navigation links as needed -->
+                <li><a href="../logout.php">Logout</a></li> <!-- Adjust the path to logout.php as needed -->
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <p>This is your user dashboard. From here, you can navigate to view your invoices or reservations.</p>
+    </main>
+<?php echo  displayNoInvoicesFound();?>
+    
+</body>
+</html>
