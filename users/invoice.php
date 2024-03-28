@@ -2,7 +2,7 @@
 session_start();
 include '../db.php'; // Adjust path as necessary
 function displayNoInvoicesFound() {
-    echo "No invoices found.";
+    echo "You have not made any reservations yet.";
 }
 // Ensure user is logged in and has a customer ID in session
 // Check if the user is logged in
