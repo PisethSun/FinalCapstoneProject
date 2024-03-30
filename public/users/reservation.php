@@ -1,6 +1,6 @@
+<?php require_once('../../private/initialize.php'); ?>
 <?php
-session_start();
-include '../db.php'; // Adjust path as necessary
+
 
 // Ensure user is logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || !isset($_SESSION['customer_id'])) {
@@ -12,7 +12,7 @@ $customerName = "Guest"; // Default name in case something goes wrong
 $customer_id = $_SESSION['customer_id'];
 
 // Fetch the customer's name from the database
-$stmt = $mysqli->prepare("SELECT customer_first_name, customer_last_name FROM customer WHERE customer_id = ?");
+$stmt = $db->prepare("SELECT customer_first_name, customer_last_name FROM customer WHERE customer_id = ?");
 $stmt->bind_param("i", $customer_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -24,10 +24,10 @@ if ($row = $result->fetch_assoc()) {
 $stmt->close();
 
 // Fetch technicians (employees)
-$technicians = $mysqli->query("SELECT employee_id, employee_first_name, employee_last_name FROM employee");
+$technicians = $db->query("SELECT employee_id, employee_first_name, employee_last_name FROM employee");
 
 // Fetch tasks
-$tasks = $mysqli->query("SELECT task_id, task_name, task_description, task_price, task_estimate_time FROM task");
+$tasks = $db->query("SELECT task_id, task_name, task_description, task_price, task_estimate_time FROM task");
 ?>
 
 <!DOCTYPE html>
