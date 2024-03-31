@@ -242,11 +242,13 @@ function sanitize_and_collect_user_input($db, $post_data) {
       'username' => mysqli_real_escape_string($db, $post_data['username']),
       'email' => mysqli_real_escape_string($db, $post_data['email']),
       'password' => $post_data['password'], // Password is hashed later, no need for escaping
+      'confirm_password' => $post_data['confirm_password'], // Add confirm password field
       'firstName' => mysqli_real_escape_string($db, $post_data['firstName']),
       'lastName' => mysqli_real_escape_string($db, $post_data['lastName']),
       'phone' => mysqli_real_escape_string($db, $post_data['phone']),
   ];
 }
+
 
 // Assuming process_signup is already defined as per previous instructions
 

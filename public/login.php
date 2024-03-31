@@ -65,20 +65,37 @@ if (is_post_request()) {
 ?>
 
 <?php include(SHARED_PATH . '/public_header.php'); ?>
-<h2>Login</h2>
-
-<?php if (!empty($errors)): ?>
+<section>
+    
+<div class="uk-container uk-align-center uk-text-center">
+    <h1 class="title" style="font-size:50px; font-family: 'Faustina', serif;">Login to <?=APP_NAME?></h1>
+    <hr class="uk-divider-icon">
+    <?php if (!empty($errors)): ?>
 <div class="error-container">
     <?php foreach ($errors as $error): ?>
         <p><?php echo htmlspecialchars($error); ?></p>
     <?php endforeach; ?>
 </div>
 <?php endif; ?>
+    <form action="login.php" method="POST">
+        <div class="uk-margin">
+            <input class="uk-input uk-form-width-large uk-form-large" type="email" name="email" placeholder="Enter your Email">
+        </div>
+        <div class="uk-margin">
+            <input class="uk-input uk-form-width-large uk-form-large" type="password" name="password" placeholder="Enter your password" >
+        </div>
+        <button class="uk-button uk-button-primary" type="submit"  value="Login" name="login">Login</button>
+    </form>
+ 
+</div>
+</section>
 
-<form action="login.php" method="post">
+
+
+<!-- <form action="login.php" method="post">
     Email: <input type="email" name="email" ><br>
     Password: <input type="password" name="password" ><br>
     <input type="submit" value="Login">
-</form>
+</form> -->
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>

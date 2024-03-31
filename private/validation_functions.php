@@ -122,7 +122,6 @@
 
 
   // user validate, when sign up 
-
   function validate_user_input($user_input) {
     $errors = [];
 
@@ -142,6 +141,12 @@
         $errors[] = "Password cannot be blank.";
     } elseif (!has_length($user_input['password'], ['min' => 8])) {
         $errors[] = "Password must be at least 8 characters long.";
+    }
+
+    if (is_blank($user_input['confirm_password'])) {
+        $errors[] = "Confirm password cannot be blank.";
+    } elseif ($user_input['password'] !== $user_input['confirm_password']) {
+        $errors[] = "Password and confirm password must match.";
     }
 
     if (is_blank($user_input['firstName'])) {
@@ -164,6 +169,7 @@
 
     return $errors;
 }
+
 
 // validate log in input 
 function validate_login_input($user_input) {
