@@ -44,10 +44,15 @@ if (is_post_request()) {
       $errors[] = $login_failure_msg;
     }
     }
+    
+
 }
 
+
 ?>
+
 <?php include(SHARED_PATH . '/public_header.php'); ?>
+
 <h2>Login</h2>
 <?php 
 // Displaying errors if any
