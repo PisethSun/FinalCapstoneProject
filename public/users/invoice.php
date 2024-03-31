@@ -45,7 +45,7 @@ if (isset($_SESSION['customer_id'])) {
 
     if ($row = $result->fetch_assoc()) {
         // Assign fetched data to variables
-        $customerName = $row['customer_first_name'] . " " . $row['customer_last_name'];
+        $customerName = $row['customer_first_name'] ;
         $customerEmail = $row['customer_email'];
     }
 
