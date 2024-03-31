@@ -165,4 +165,24 @@
     return $errors;
 }
 
+// validate log in input 
+function validate_login_input($user_input) {
+  $errors = [];
+
+  if (is_blank($user_input['email'])) {
+      $errors[] = "Email cannot be blank.";
+  } elseif (!has_valid_email_format($user_input['email'])) {
+      $errors[] = "Email must be a valid format.";
+  }
+
+  if (is_blank($user_input['password'])) {
+      $errors[] = "Password cannot be blank.";
+  } elseif (!has_length($user_input['password'], ['min' => 8])) {
+      $errors[] = "Password must be at least 8 characters long.";
+  }
+
+  return $errors;
+}
+
+
 ?>

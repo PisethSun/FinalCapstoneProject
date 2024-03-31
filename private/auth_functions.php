@@ -37,8 +37,8 @@ function login_is_still_valid() {
 // request should be considered a "logged in" request or not.
 // It is the core of require_login() but it can also be called
 // on its own in other contexts (e.g. display one link if an admin
-// is logged in and display another link if they are not)
-function is_logged_in() {
+// is logged in and d-isplay another link if they are not)
+function is_logged_in_admins() {
   // Having a admin_id in the session serves a dual-purpose:
   // - Its presence indicates the admin is logged in.
   // - Its value tells which admin for looking up their record.
@@ -60,12 +60,10 @@ function page_exempt_from_auth() {
 // require a valid login before granting access to the page.
 function require_login() {
   if(!is_logged_in() && !page_exempt_from_auth()) {
-    redirect_to(url_for('/users/login.php'));
-  } else {
-    // Do nothing, let the rest of the page proceed.
+      redirect_to(url_for('/users/login.php'));
   }
-
 }
+
 
 
 // Login as users
@@ -83,6 +81,11 @@ function log_in_user($user) {
 
   return true;
 }
+
+function is_logged_in() {
+  return isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
+}
+
 
 
 ?>

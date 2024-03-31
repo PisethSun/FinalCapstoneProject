@@ -1,4 +1,5 @@
 <?php require_once('../../private/initialize.php'); ?>
+<?php require_login(); ?>
 <?php
 // Check if the user is logged in
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {

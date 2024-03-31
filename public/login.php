@@ -2,8 +2,15 @@
 <?php
 if (is_post_request() == "POST") {
     
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    
+    // Prepare user_input array for validation function
+    $user_input = [
+        'email' => $email,
+        'password' => $password
+    ];
+    $errors = validate_login_input($user_input);
     
     $stmt = $db->prepare("SELECT account_id, account_password, access_level FROM account WHERE account_email = ?");
     $stmt->bind_param("s", $email);
@@ -42,10 +49,10 @@ if (is_post_request() == "POST") {
                 exit;
             }
         } else {
-            echo "Invalid password.";
+            $errors[] = "Invalid password.";
         }
     } else {
-        echo "No account found with that email.";
+        $errors[] = "No account found with that email.";
     }
 
     $stmt->close();
@@ -54,9 +61,17 @@ if (is_post_request() == "POST") {
 ?>
 <?php include(SHARED_PATH . '/public_header.php'); ?>
     <h2>Login</h2>
+
+    <?php if (!empty($errors)): ?>
+<div class="error-container">
+    <?php foreach ($errors as $error): ?>
+        <p><?php echo htmlspecialchars($error); ?></p>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
     <form action="login.php" method="post">
-        Email: <input type="email" name="email" required><br>
-        Password: <input type="password" name="password" required><br>
+        Email: <input type="email" name="email" ><br>
+        Password: <input type="password" name="password" ><br>
         <input type="submit" value="Login">
     </form>
     <?php include(SHARED_PATH . '/public_footer.php'); ?>
