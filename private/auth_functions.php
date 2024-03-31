@@ -49,7 +49,7 @@ function is_logged_in_admins() {
 // exempt from user authentication
 function page_exempt_from_auth() {
   $no_auth_pages = [
-    '/users/login.php'
+    '/users/index.php'
   ];
   $current_page = str_replace(WWW_ROOT, '', $_SERVER['SCRIPT_NAME']);
   // If it is in the array, it is not restricted
@@ -60,7 +60,7 @@ function page_exempt_from_auth() {
 // require a valid login before granting access to the page.
 function require_login() {
   if(!is_logged_in() && !page_exempt_from_auth()) {
-      redirect_to(url_for('/users/login.php'));
+      redirect_to(url_for('/users/index.php'));
   }
 }
 
