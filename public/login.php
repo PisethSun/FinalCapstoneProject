@@ -28,6 +28,7 @@ if (is_post_request()) {
             $row = $result->fetch_assoc();
             if (password_verify($password, $row['account_password'])) {
                 // Login success: set session variables
+                session_regenerate_id(true);
                 $_SESSION['loggedin'] = true;
                 $_SESSION['account_id'] = $row['account_id'];
                 $_SESSION['access_level'] = $row['access_level'];
@@ -46,7 +47,7 @@ if (is_post_request()) {
                 $customerStmt->close();
 
                 // Redirect based on access_level
-                $redirectUrl = $row['access_level'] == 1 ? "users/index.php" : "welcome.php";
+                $redirectUrl = $row['access_level'] == 1 ? "users/index.php" : "admins/index.php";
                 header("Location: $redirectUrl");
                 exit;
             } else {
