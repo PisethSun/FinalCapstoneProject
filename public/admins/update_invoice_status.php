@@ -1,6 +1,8 @@
 <?php require_once('../../private/initialize.php'); ?>
 
-<?php require_login(); ?>
+
+
+
 <?php
 // Check if the user is logged in
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
@@ -27,15 +29,28 @@ if(isset($_SESSION['customer_id'])) {
     $stmt->close();
 }
 ?>
-
-<?php include(SHARED_PATH . '/admins_header.php'); ?>
-
+<?php
 
 
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['submit'])) {
+        $invoice_id = $_POST['invoice_id'];
+        $invoice_status = $_POST['invoice_status'];
 
-
-
-
-
-
-
+        // Update invoice status in the database
+        $update_query = "UPDATE invoice SET invoice_status = ? WHERE invoice_id = ?";
+        $stmt = $db->prepare($update_query);
+        $stmt->bind_param("si", $invoice_status, $invoice_id);
+        if ($stmt->execute()) {
+            // Success: Redirect back to order.php
+            header("location: order.php");
+            exit;
+        } else {
+            // Error: Handle the error accordingly
+            echo "Error updating invoice status.";
+        }
+        $stmt->close();
+    }
+}
+?>

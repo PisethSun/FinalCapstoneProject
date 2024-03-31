@@ -145,12 +145,6 @@ include(SHARED_PATH . '/public_header.php');
             <p style="color:white; font-size: 2em;">Already have an account? Login Now</p>
         </button>
    
-    <!-- Email: <input type="email" name="email" ><br>
-    Password: <input type="password" name="password" ><br>
-    First Name: <input type="text" name="firstName" ><br>
-    Last Name: <input type="text" name="lastName" ><br>
-    Phone: <input type="text" name="phone" ><br>
-    <input type="submit" value="Sign Up"> -->
 </form>
 
 
