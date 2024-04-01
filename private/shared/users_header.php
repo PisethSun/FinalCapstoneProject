@@ -1,7 +1,40 @@
+<?php require_once('../../private/initialize.php'); ?>
+
+<?php require_login(); ?>
 
 <?php
 if(!isset($page_title)) { $page_title = 'Welcome';}
 ?> 
+
+<?php 
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+   header("location: ../login.php"); // Redirect to login page if not logged in
+   exit;
+}
+
+$customerName = "Guest"; // Default name in case something goes wrong
+$customerEmail = ""; // Default email
+
+if (isset($_SESSION['customer_id'])) {
+   $customer_id = $_SESSION['customer_id'];
+
+   // Fetch the customer's information from the database
+   $stmt = $db->prepare("SELECT customer_first_name, customer_last_name FROM customer WHERE customer_id = ?");
+   $stmt->bind_param("i", $customer_id);
+   $stmt->execute();
+   $result = $stmt->get_result();
+
+   if ($row = $result->fetch_assoc()) {
+       // Assign fetched data to variables
+       $customerName = $row['customer_first_name'] ;
+      
+   }
+
+   $stmt->close();
+}
+
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -21,7 +54,7 @@ if(!isset($page_title)) { $page_title = 'Welcome';}
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
       <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -45,22 +78,18 @@ if(!isset($page_title)) { $page_title = 'Welcome';}
    <div class="flex">
         <nav class="navbar">
 
-        <a href="gallery.php">Gallery</a>
-         <a href="products.php">Products</a>
-         <a href="services.php">Services</a>
-         <a href="contact.php">Contact</a>
+        <a href="index.php">Home</a>
+         <a href="invoice.php">Invoice</a>
+         <a href="reservation.php">Reservation</a>
+        
 
           </nav>
 
       <a href="index.php" class="logo"><?=APP_NAME?><span>&trade;</span></a>
-
       <nav class="navbar">
-         <a href="login.php">Login</a>
-         <a href="signup.php">Sign Up</a>
-    
-      
-
-      </nav>
+    <a><?php echo "Hi, " . htmlspecialchars($customerName); ?></a>
+    <a href="../logout.php">Logout</a>
+</nav>
 
       <?php echo display_session_message();?>
 

@@ -82,7 +82,7 @@ Indulge in a haven of hygiene and tranquility at <?=APP_NAME?>. Our nail salon g
             <p class="uk-h4 uk-align-center">Sign Up Today</p>
           <p uk-margin>
    <p uk-margin>
-     <button onclick="location.href='<?php echo url_for('/register.php');?>" class="uk-button uk-button-secondary uk-button-large ">Sign Up Today</button>
+     <button onclick="location.href='<?php echo url_for('/signup.php');?>" class="uk-button uk-button-secondary uk-button-large ">Sign Up Today</button>
 </p>
 
  

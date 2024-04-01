@@ -1,10 +1,15 @@
 <?php require_once('../../private/initialize.php'); ?>
+<?php $page_title = 'Your Invoices';?>
+<?php include(SHARED_PATH .'/users_header.php');?>
+<?php require_login(); ?>
 <?php
 function displayNoInvoicesFound() {
     echo "You have not made any reservations yet.";
 }
 
 function echoInvoiceDetailsWithTime($row) {
+
+    echo "Invoice ID: " . $row['invoice_id'] . "<br>";
     echo "Date: " . $row['invoice_date'] . "<br>";
     echo "Status: " . $row['invoice_status'] . "<br>";
     echo "Technician: " . $row['employee_first_name'] . " " . $row['employee_last_name'] . "<br>";
@@ -25,33 +30,6 @@ function echoInvoiceDetailsWithTime($row) {
     }
 }
 
-// Ensure user is logged in and has a customer ID in session
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: ../login.php"); // Redirect to login page if not logged in
-    exit;
-}
-
-$customerName = "Guest"; // Default name in case something goes wrong
-$customerEmail = ""; // Default email
-
-if (isset($_SESSION['customer_id'])) {
-    $customer_id = $_SESSION['customer_id'];
-
-    // Fetch the customer's information from the database
-    $stmt = $db->prepare("SELECT customer_first_name, customer_last_name, customer_email FROM customer WHERE customer_id = ?");
-    $stmt->bind_param("i", $customer_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($row = $result->fetch_assoc()) {
-        // Assign fetched data to variables
-        $customerName = $row['customer_first_name'] ;
-        $customerEmail = $row['customer_email'];
-    }
-
-    $stmt->close();
-}
-
 // Fetch invoice details including technician, task, and price
 $query = "SELECT i.invoice_date, i.invoice_status, e.employee_first_name, e.employee_last_name, t.task_name, t.task_description, t.task_price, t.task_estimate_time
           FROM invoice i
@@ -68,63 +46,50 @@ $result = $stmt->get_result();
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Invoice</title>
-</head>
-<body>
-<header>
-    <h1>Welcome to Your Dashboard</h1>
-    <nav>
-        <ul>
-            <li>Hi, <?php echo htmlspecialchars($customerName); ?></li>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="invoice.php">Invoices</a></li>
-            <li><a href="reservation.php">Reservations</a></li>
-            <!-- You can add more navigation links as needed -->
-            <li><a href="../logout.php">Logout</a></li> <!-- Adjust the path to logout.php as needed -->
-        </ul>
-    </nav>
-</header>
+<div class="container-lg" >
+    <table class="table-info table">
+        <thead>
+            <tr>
+                <th class="fs-5" scope="col">Technician Name</th>
+                <th  class="fs-5" scope="col">Date</th>
+                <th class="fs-5" scope="col">Task</th>
+                <th class="fs-5" scope="col">Description</th>
+                <th class="fs-5" scope="col">Price</th>
+                <th class="fs-5" scope="col">Estimated Time</th>
+                <th class="fs-5" scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody class="fs-5">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    
+                    echo "<td>" . $row['employee_first_name'] . " " . $row['employee_last_name'] . "</td>";
+                    echo "<td>" . $row['invoice_date'] . "</td>";
+                    echo "<td>" . $row['task_name'] . "</td>";
+                    echo "<td>" . $row['task_description'] . "</td>";
+                    echo "<td>$" . $row['task_price'] . "</td>";
+                    echo "<td>";
+                    if ($row['task_estimate_time'] < 60) {
+                        echo $row['task_estimate_time'] . " mins";
+                    } else {
+                        $hours = floor($row['task_estimate_time'] / 60);
+                        $minutes = $row['task_estimate_time'] % 60;
+                        echo $hours . " hours ";
+                        if ($minutes > 0) {
+                            echo $minutes . " mins";
+                        }
+                    }
+                    echo "</td>";
+                    echo "<td style='color: " . ($row['invoice_status'] == 'Accept' ? 'green' : 'red') . "'>" . $row['invoice_status'] . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='7'>No invoices found.</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
-<main>
-    <p>This is your user dashboard. From here, you can navigate to view your invoices or reservations.</p>
-
-    <?php
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echoInvoiceDetailsWithTime($row);
-        }
-
-        // Calculate total price
-        $totalQuery = "SELECT SUM(t.task_price) AS total_price
-                   FROM invoice i
-                   JOIN reservation r ON i.reservation_id = r.reservation_id
-                   JOIN selected_tasks st ON r.reservation_id = st.reservation_id
-                   JOIN task t ON st.task_id = t.task_id
-                   WHERE r.customer_id = ?";
-        $totalStmt = $db->prepare($totalQuery);
-        $totalStmt->bind_param("i", $customer_id);
-        $totalStmt->execute();
-        $totalResult = $totalStmt->get_result();
-        $totalRow = $totalResult->fetch_assoc();
-
-        // Display total price if invoices are found
-        if ($totalRow['total_price'] !== null) {
-            echo "<p>Total Price: $" . $totalRow['total_price'] . "</p>";
-        }
-    } else {
-        displayNoInvoicesFound();
-    }
-
-    $stmt->close();
-    if (isset($totalStmt)) {
-        $totalStmt->close();
-    }
-    $db->close();
-    ?>
-</main>
-</body>
-</html>
+<?php include(SHARED_PATH .'/users_footer.php');?>

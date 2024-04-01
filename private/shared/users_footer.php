@@ -1,4 +1,4 @@
-<footer class="text-white text-center text-lg-start bg-light.bg-gradient fs-3">
+<footer class="text-white text-center text-lg-start bg-light.bg-gradient fs-5">
     <!-- Grid container -->
     <div class="container p-4 fixed-bottom">
       <!--Grid row-->
@@ -31,7 +31,7 @@
         <!--Grid column-->
   
         <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 fs-3 ">
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 fs-5">
          
           <div class="form-outline form-white mb-4">
             <input type="text" id="formControlLg" class="form-control form-control-lg" />

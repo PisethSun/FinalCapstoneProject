@@ -125,7 +125,7 @@ if (!$done_result) {
             while ($row = $done_result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>{$row['invoice_id']}</td>";
-                // echo "<td>{$row['customer_first_name']}</td>";
+               
                 echo "<td>{$row['invoice_date']}</td>";
                 echo "<td>{$row['invoice_status']}</td>";
                 // Add more table cells with invoice details as needed
