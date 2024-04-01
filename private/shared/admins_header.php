@@ -51,7 +51,7 @@ if (!is_admin()) {
    <div class="flex">
         <nav class="navbar">
 
-        <a href="index.php">Home</a></li>
+
 
         <a href="order.php">Order</a>
       

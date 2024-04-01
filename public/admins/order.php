@@ -46,8 +46,8 @@ function echoInvoiceDetailsWithTime($row) {
     echo "<form action='update_invoice_status.php' method='post'>";
     echo "<input type='hidden' name='invoice_id' value='" . $row['invoice_id'] . "'>";
     echo "<select name='invoice_status'>";
-    echo "<option value='Accept'>Accept</option>";
-    echo "<option value='Decline'>Decline</option>";
+    echo "<option value='Accepted'>Accept</option>";
+    echo "<option value='Declined'>Decline</option>";
     echo "</select>";
     echo "<button type='submit' name='submit'>Update</button>";
     echo "</form>";

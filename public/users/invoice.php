@@ -81,7 +81,7 @@ $result = $stmt->get_result();
                         }
                     }
                     echo "</td>";
-                    echo "<td style='color: " . ($row['invoice_status'] == 'Accept' ? 'green' : 'red') . "'>" . $row['invoice_status'] . "</td>";
+                    echo "<td style='color: " . ($row['invoice_status'] == 'Accepted' ? 'green' : 'red') . "'>" . $row['invoice_status'] . "</td>";
                     echo "</tr>";
                 }
             } else {

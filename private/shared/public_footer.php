@@ -1,6 +1,6 @@
 <footer class="text-white text-center text-lg-start bg-light.bg-gradient fs-3">
     <!-- Grid container -->
-    <div class="container p-4 fixed-bottom">
+    <div class="container p-4 ">
       <!--Grid row-->
       <div class="row mt-4">
         <!--Grid column-->
