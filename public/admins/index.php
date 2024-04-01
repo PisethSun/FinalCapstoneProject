@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialize.php'); ?>
-
 <?php require_login(); ?>
+<?php include(SHARED_PATH . '/admins_header.php'); ?>
 <?php
 // Check if the user is logged in
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
@@ -28,7 +28,19 @@ if(isset($_SESSION['customer_id'])) {
 }
 ?>
 
-<?php include(SHARED_PATH . '/admins_header.php'); ?>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Total Order</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Summary</h6>
+    <p class="card-text">
+      Total Items: <?php echo $total_items; ?><br>
+      Total Price: $<?php echo $total_price; ?><br>
+      <!-- Add more order summary details as needed -->
+    </p>
+  </div>
+</div>
+
+
 
 
 

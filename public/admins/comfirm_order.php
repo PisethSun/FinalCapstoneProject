@@ -4,14 +4,14 @@
 
 <?php
 // Ensure user is logged in as an admin
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: ../login.php"); // Redirect to login page if not logged in
     exit;
 }
 
 $customerName = "Guest"; // Default name in case something goes wrong
 
-if (isset($_SESSION['customer_id'])) {
+if(isset($_SESSION['customer_id'])) {
     $customer_id = $_SESSION['customer_id'];
 
     // Fetch the customer's name from the database
@@ -28,13 +28,11 @@ if (isset($_SESSION['customer_id'])) {
     $stmt->close();
 }
 
-function displayNoInvoicesFound()
-{
-    echo "<tr><td colspan='9'>No invoices found.</td></tr>";
+function displayNoInvoicesFound() {
+    echo "No invoices found.";
 }
 
-function echoInvoiceDetailsWithTime($row)
-{
+function echoInvoiceDetailsWithTime($row) {
     echo "<tr>";
     echo "<td>" . $row['invoice_id'] . "</td>";
     echo "<td>" . $row['customer_name'] . "</td>";
@@ -51,7 +49,7 @@ function echoInvoiceDetailsWithTime($row)
     echo "<option value='Accepted'>Accept</option>";
     echo "<option value='Declined'>Decline</option>";
     echo "</select>";
-    echo "<button type='submit' name='submit' class='btn btn-primary'>Update</button>";
+    echo "<button type='submit' name='submit'>Update</button>";
     echo "</form>";
     echo "</td>";
     echo "</tr>";
@@ -76,38 +74,40 @@ if (!$done_result) {
     exit("Database query failed."); // Handle the error appropriately
 }
 ?>
+
+
+
 <div class="container-xxl">
     <hr class="border border-primary border-3 opacity-75">
-    <h2 class="fs-3" style="text-align: center;">Invoices</h2>
+    <h2 class="fs-3" style="text-align: center;">Approved Invoices</h2>
     <table class="table table-striped table-info">
         <thead class="thead-dark fs-4 table-success">
             <tr class="fs-3">
                 <th>Invoice ID</th>
-                <th>Customer</th>
                 <th>Date</th>
                 <th>Status</th>
-                <th>Task</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Estimate Time</th>
-                <th>Action</th>
+                <!-- Add more table headers as needed -->
             </tr>
         </thead>
-        <tbody class="fs-4 ">
+        <tbody class="fs-4">
             <?php
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echoInvoiceDetailsWithTime($row);
-                }
-            } else {
-                displayNoInvoicesFound();
+            // Fetch and display approved invoices
+            while ($row = $done_result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>{$row['invoice_id']}</td>";
+                echo "<td>{$row['invoice_date']}</td>";
+                echo "<td>{$row['invoice_status']}</td>";
+                // Add more table cells with invoice details as needed
+                echo "</tr>";
             }
-            mysqli_free_result($result);
+            mysqli_free_result($done_result);
             ?>
         </tbody>
     </table>
 </div>
 
 
+</div>
 
-<?php include(SHARED_PATH . '/admins_footer.php'); ?>
+
+
