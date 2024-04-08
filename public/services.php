@@ -29,23 +29,36 @@
 <!-- REVIEW SECTION -->
 <section class="reviews">
 
-   <h1 class="title" style="color: black;">Popular Options</h1>
+
+   <h1 class="title" style="font-size: 3rem; color: black; font-family: bold;">Popular Options</h1>
+
 
    <br>
     <div class="box">
    <hr style="color: black;">
 </div>
 
-   <div class="box-container">
+   <div class="box-container" >
 
       <div class="box"  style="border: none;">
          
          <p style="font-size: 15px; color: black; font-weight: bold;">Most Requested</p>
         <div class="stars" style="background: none; ">
-         <p style="color: black;">DIP POWDER (SNS)  |  $45 </p>
-         <p style="color: black;">DIP POWDER (SNS) WITH REGULAR PEDICURE  |  $72 </p>
-         <p style="color: black;">REGULAR PEDICURE  WITH CALLUS REMOVER  |  $40  </p>
-         
+
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">DIP POWDER (SNS) </div>
+    <div>$45</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">DIP POWDER (SNS) WITH REGULAR PEDICURE </div>
+    <div>$72</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">REGULAR PEDICURE  WITH CALLUS REMOVER </div>
+    <div>$40</div>
+</div>
+
          </div> 
         
       </div>
@@ -53,10 +66,19 @@
       <div class="box"  style="border: none;">
          <p style="font-size: 15px; color: black; font-weight: bold;">COMBINATION DEALS</p>
          <div class="stars" style="background: none;">
-         	<p style="color: black;" >CLASSIC MANICURE & CLASSIC PEDICURE  |  $40</p>
-         	<p style="color: black;">COLOR GEL MANICURE & CLASSIC PEDICURE  |  $65</p>
-         	<p style="color: black;">SPA MANICURE & SIGNATURE SPA PEDICURE  |  $75</p>
-          
+         <div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">CLASSIC MANICURE & CLASSIC PEDICURE</div>
+    <div>$40</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">COLOR GEL MANICURE & CLASSIC PEDICURE</div>
+    <div>$65</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">SPA MANICURE & SIGNATURE SPA PEDICURE</div>
+    <div>$75</div>
+</div>
+
          </div>
        
       </div>
@@ -80,12 +102,27 @@
 
       <strong style="font-size: 15px; color: black; font-family: bold;">THE BASICS</strong>
          
-         	<p style="color: black; ">FRENCH MANICURE  |  $23</p>
-         	<p style="color: black;">BUFF MANICURE  |  $20 </p>
-         	<p style="color: black;">KERATIN MANICURE  |  $23  </p>
-         	<p style="color: black;">SPA MANICURE  |  $30</p>
-         	<p style="color: black;">MANI POLISH CHANGE  |  $10 </p>
-         	
+      <div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">FRENCH MANICURE</div>
+    <div>$23</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">BUFF MANICURE</div>
+    <div>$20</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">KERATIN MANICURE</div>
+    <div>$23</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">SPA MANICURE</div>
+    <div>$30</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">MANI POLISH CHANGE</div>
+    <div>$10</div>
+</div>
+
          </div>
 
       
@@ -96,13 +133,31 @@
 
       <strong style="font-size: 15px; color: black; font-family: bold;">LONGER LASTING</strong>
          	<br>
-         	<p style="color: black;">COLOR GEL MANICURE  |  $38</p>
-         	<p style="color: black;">COLOR GEL FRENCH MANICURE  |  $45</p>
-         	<p style="color: black;">DIP POWDER [SNS] MANICURE  |  $45</p>
-         	<p style="color: black;">SPA MANICURE  |  $30</p>
-         	<p style="color: black;">DIP POWDER [SNS] FRENCH MANICURE  |  $55             (WHITE POWDER USED AS FRENCH)</p>
-         	<p style="color: black;">DIP POWDER [SNS] COLORED FRENCH MANICURE | $60+ (COLOR GEL USED AS FRENCH)</p>
-         	
+            <div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">COLOR GEL MANICURE</div>
+    <div>$38</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">COLOR GEL FRENCH MANICURE</div>
+    <div>$45</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">DIP POWDER [SNS] MANICURE</div>
+    <div>$45</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">SPA MANICURE</div>
+    <div>$30</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">DIP POWDER [SNS] FRENCH MANICURE</div>
+    <div>$55 (WHITE POWDER USED AS FRENCH)</div>
+</div>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader="fill: -">DIP POWDER [SNS] COLORED FRENCH MANICURE</div>
+    <div>$60+ (COLOR GEL USED AS FRENCH)</div>
+</div>
+
          </div>
          
       
