@@ -10,7 +10,7 @@ if(!isset($page_title)) { $page_title = 'Welcome';}
     <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+   <link rel="icon" type="image/x-icon" href="images/icon/helenlogo.ico">
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
@@ -45,14 +45,18 @@ if(!isset($page_title)) { $page_title = 'Welcome';}
    <div class="flex">
         <nav class="navbar">
 
-        <a href="gallery.php">Gallery</a>
-         <a href="products.php">Products</a>
-         <a href="services.php">Services</a>
-         <a href="contact.php">Contact</a>
+           
+           <a href="gallery.php">Gallery</a>
+           <a href="products.php">Products</a>
+           <a href="services.php">Services</a>
+           <a href="contact.php">Contact</a>
+           
+         </nav>
+         
+         <!-- <a href="index.php" class="logo"><?=APP_NAME?><span>&trade;</span></a> -->
+         <a href="index.php" class="logo"><img src="images/icon/helenlogo.png" alt="Helen Logo" style="width: 120px; height: auto;"></a>
 
-          </nav>
 
-      <a href="index.php" class="logo"><?=APP_NAME?><span>&trade;</span></a>
 
       <nav class="navbar">
          <a href="login.php">Login</a>
