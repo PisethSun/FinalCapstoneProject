@@ -36,7 +36,7 @@
    <div class="uk-container">
 <div class="uk-child-width-1-2@m" uk-grid>
     <div>
-        <div class="uk-card uk-card-default">
+        <div class="uk-card uk-card-default"> 
             <div class="uk-card-media-top">
                 <img src="<?php echo url_for('/images/store2.jpg');?>" width="730" height="520" alt="">
             </div>
@@ -69,7 +69,7 @@ Indulge in a haven of hygiene and tranquility at <?=APP_NAME?>. Our nail salon g
         <div class="uk-background-secondary uk-light uk-padding uk-panel" style="color:black;">
             <p class="uk-h4 uk-align-center">Treat Yourself Today</p>
             <p uk-margin>
-     <button onclick="location.href='?<?php url_for('/login.php');?>" class="uk-button uk-button-secondary uk-button-large ">BOOK AN APPOINTMENT</button>
+     <button onclick="location.href='login.php';"  class="uk-button uk-button-secondary uk-button-large ">BOOK AN APPOINTMENT</button>
      
      
     
@@ -82,7 +82,7 @@ Indulge in a haven of hygiene and tranquility at <?=APP_NAME?>. Our nail salon g
             <p class="uk-h4 uk-align-center">Sign Up Today</p>
           <p uk-margin>
    <p uk-margin>
-     <button onclick="location.href='<?php echo url_for('/signup.php');?>" class="uk-button uk-button-secondary uk-button-large ">Sign Up Today</button>
+     <button onclick="location.href='signup.php';" class="uk-button uk-button-secondary uk-button-large ">Sign Up Today</button>
 </p>
 
  

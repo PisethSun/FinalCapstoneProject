@@ -26,20 +26,6 @@ if(isset($_SESSION['customer_id'])) {
 
     $stmt->close();
 }
-?>
-
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Total Order</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Summary</h6>
-    <p class="card-text">
-      Total Items: <?php echo $total_items; ?><br>
-      Total Price: $<?php echo $total_price; ?><br>
-      <!-- Add more order summary details as needed -->
-    </p>
-  </div>
-</div>
-
 
 
 

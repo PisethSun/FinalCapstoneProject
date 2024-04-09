@@ -68,4 +68,8 @@ function display_session_message() {
   }
 }
 
+function sanitize_input($value) {
+  return trim(htmlspecialchars($value));
+}
+
 ?>
