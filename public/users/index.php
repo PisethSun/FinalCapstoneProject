@@ -20,12 +20,13 @@ $stmt->bind_param("i", $customer_id);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
+<div class="container-lg" >
 
-<div class="container-fluid">
     <div class="row">
         <!-- Left Column for Upcoming Appointments -->
         <div class="col-md-6">
-            <h3>Upcoming Appointments</h3>
+        <h3 class="text-center">Upcoming Appointments</h3>
+
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -62,7 +63,8 @@ $result = $stmt->get_result();
 
         <!-- Right Column for Map -->
         <div class="col-md-6">
-            <h3>Our Location</h3>
+        <h3 class="text-center">Our Location</h3>
+           
             <div class="map" style="width:100%; height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; overflow: hidden; padding-bottom: 56.25%;position: relative;height: 100;">
    
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2942.602000004859!2d-70.95823012388458!3d42.478752771182116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e36d2f3a4feab1%3A0xb62e9630bc875f5b!2sCrystal%20Nails%20%26%20Spa!5e0!3m2!1sen!2sus!4v1696345659125!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:120%; height: 800px; height: 100%;width: 100%;position: absolute;"></iframe>
