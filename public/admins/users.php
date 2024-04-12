@@ -2,18 +2,18 @@
 <?php require_login(); ?>
 <?php include(SHARED_PATH . '/admins_header.php'); ?>
 
-<div class="container-xl">
+<div class="container-xl  uk-text-bolder uk-text-large">
     <!-- HTML form for creating a new customer or account -->
-    <h2>All Users</h2>
+    <h2 class="container-xl  uk-text-bolder uk-text-large" >All Users</h2>
 
     <!-- Button to create a new user -->
     <a href="create.php" class="btn btn-primary mb-3">Create New User</a>
 
     <!-- Table to display users -->
-    <table class="uk-table uk-table-hover uk-table-divider">
-        <thead>
+    <table class="uk-table uk-table-hover uk-table-divider uk-text-large">
+        <thead >
             <tr>
-                <th>First Name</th>
+                <th >First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Actions</th>

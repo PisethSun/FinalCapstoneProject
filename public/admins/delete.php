@@ -2,32 +2,6 @@
 require_once('../../private/initialize.php');
 require_login();
 
-// Check if the user is logged in
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: ../login.php"); // Redirect to login page if not logged in
-    exit;
-}
-
-// Initialize variables
-$customerName = "Guest"; // Default name in case something goes wrong
-
-if (isset($_SESSION['customer_id'])) {
-    $customer_id = $_SESSION['customer_id'];
-
-    // Fetch the customer's name from the database
-    $stmt = $db->prepare("SELECT customer_first_name FROM customer WHERE customer_id = ?");
-    $stmt->bind_param("i", $customer_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($row = $result->fetch_assoc()) {
-        // Concatenate the first name
-        $customerName = $row['customer_first_name'];
-    }
-
-    $stmt->close();
-}
-
 // Ensure user ID is provided as a GET parameter
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     redirect_to('users.php'); // Redirect to users page if ID is not provided or is invalid
@@ -77,7 +51,7 @@ if ($invoice_stmt->execute()) {
         // Execute the statement
         if ($customer_stmt->execute()) {
             // Now, delete the account record associated with the customer
-            $account_delete_sql = "DELETE FROM account WHERE account_id = ?";
+            $account_delete_sql = "DELETE FROM account WHERE customer_id = ?";
             $account_stmt = $db->prepare($account_delete_sql);
             $account_stmt->bind_param("i", $user_id);
 
@@ -113,4 +87,3 @@ $invoice_stmt->close();
 $reservation_stmt->close();
 $customer_stmt->close();
 $account_stmt->close();
-?>

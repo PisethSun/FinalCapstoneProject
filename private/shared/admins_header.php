@@ -1,5 +1,5 @@
 <?php require_once('../../private/initialize.php'); ?>
-
+<?php $page_title = 'Admin';?>
 <?php require_login(); ?>
 
 <?php
@@ -38,7 +38,7 @@ if (isset($_SESSION['customer_id'])) {
     <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" type="image/x-icon" href="images/icon/favicon.ico">
+   <link rel="icon" type="image/x-icon" href="../images/icon/helenlogo.ico">
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
@@ -84,6 +84,7 @@ if (isset($_SESSION['customer_id'])) {
       <a href="index.php" class="logo"><?=ADMIN_DASH?><span></span></a>
 
       <nav class="navbar">
+      <a><?php echo "Hi, " . htmlspecialchars($customerName); ?></a>
       <a href="../logout.php">Logout</a>
         
     

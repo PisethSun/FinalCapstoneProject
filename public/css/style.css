@@ -267,3 +267,8 @@ body > header > div > nav.navbar {
     padding: 0;
 }
 
+.realistic-blue {
+   background-color: #007bff; /* Bootstrap's primary blue color */
+   color: #fff; /* White text for good contrast */
+   border: none; /* Optional: removes any default border */
+}
