@@ -73,8 +73,8 @@ include(SHARED_PATH . '/public_header.php');
 ?>
 
 <section>
-<div class="uk-container uk-container uk-align-center uk-text-center">
-    <h1 class="title" style="font-size:50px; font-family: 'Faustina', serif;">Welcome To <?=APP_NAME?></h1>
+<div class="uk-container  uk-align-center uk-text-center">
+    <h1 class="title" style="font-size:25px; font-family: 'Faustina', serif;">Welcome To <?=APP_NAME?></h1>
     <hr class="uk-divider-icon">
 <?php if (!empty($errors)): ?>
     <div class="error-container">
@@ -142,7 +142,7 @@ include(SHARED_PATH . '/public_header.php');
         <hr class="uk-divider-icon">
        
         <button onclick="location.href='login.php';" class="uk-button uk-button-secondary" type="button">
-            <p style="color:white; font-size: 2em;">Already have an account? Login Now</p>
+            <p style="color:white; font-size: 1em;">Already have an account? Login Now</p>
         </button>
    
 </form>
