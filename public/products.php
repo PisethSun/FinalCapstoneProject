@@ -101,7 +101,7 @@ Experience the pinnacle of nail care at <?=APP_NAME?>. Our services blend expert
     <div>
         <div class="uk-card uk-card-default">
             <div class="uk-card-media-top">
-                <img src="images/store2.jpg" width="730" height="520" alt="">
+                <img src="images/product.jpg" width="730" height="520" alt="">
             </div>
             <div class="uk-card-body">
                 <h1  class="uk-card-title uk-text-bolder" style="font-size: 20px">Our Office</h1>
@@ -118,7 +118,7 @@ Step into a world of pristine beauty at <?=APP_NAME?>. Our nail salon is not jus
 Indulge in a haven of hygiene and tranquility at <?=APP_NAME?>. Our nail salon goes beyond beauty – it's a sanctuary of cleanliness and order. Immerse yourself in a spotless office where every surface gleams, and every tool is meticulously sanitized. We pride ourselves on upholding the highest standards of cleanliness, creating an environment where you can unwind with confidence. Your well-being is paramount to us, and our commitment to a pristine space reflects that. Discover the perfect blend of luxury and cleanliness at <?=APP_NAME?>, where each visit promises not just flawless nails, but an experience of pure serenity.</p>
             </div>
             <div class="uk-card-media-bottom">
-                <img src="images/store.jpg" width="1800" height="1200" alt="">
+                <img src="images/product2.jpg" width="1800" height="1200" alt="">
             </div>
         </div>
     </div>

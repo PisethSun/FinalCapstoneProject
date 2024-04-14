@@ -76,6 +76,7 @@ if (isset($_SESSION['customer_id'])) {
         <a href="order.php">Cutomers Order</a>
         <a href="comfirm_order.php">Order Status</a>
         <a href="users.php">Users</a>
+        <a href="tasks.php">Tasks</a>
       
        
 

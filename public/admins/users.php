@@ -7,7 +7,7 @@
     <h2 class="container-xl  uk-text-bolder uk-text-large" >All Users</h2>
 
     <!-- Button to create a new user -->
-    <a href="create.php" class="btn btn-primary mb-3">Create New User</a>
+    <a href="create.php" class="btn btn-primary mb-3 btn-lg">Create New User</a>
 
     <!-- Table to display users -->
     <table class="uk-table uk-table-hover uk-table-divider uk-text-large">
@@ -34,9 +34,10 @@
                     echo "<td>" . $row['customer_last_name'] . "</td>";
                     echo "<td>" . $row['customer_email'] . "</td>";
                     // Edit button
-                    echo "<td><a href='edit.php?id=" . $row['customer_id'] . "' class='btn btn-primary btn-sm mr-2'>Edit</a>";
+                    echo "<td><a href='edit.php?id=" . $row['customer_id'] . "' class='btn btn-primary btn-lg mr-2'>Edit</a>";
                     // Delete button
-                    echo "<a href='delete.php?id=" . $row['customer_id'] . "' class='btn btn-danger btn-sm'>Delete</a></td>";
+                    echo "<a href='delete.php?id=" . $row['customer_id'] . "' class='btn btn-danger btn-lg'>Delete</a></td>";
+                    
                     echo "</tr>";
                 }
             } else {

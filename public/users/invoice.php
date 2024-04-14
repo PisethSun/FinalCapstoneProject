@@ -4,8 +4,9 @@
 <?php require_login(); ?>
 <?php
 function displayNoInvoicesFound() {
-    echo "You have not made any reservations yet.";
+    echo '<div class="alert alert-warning" role="alert">You have not made any reservations yet.</div>';
 }
+
 
 function echoInvoiceDetailsWithTime($row) {
 
