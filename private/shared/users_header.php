@@ -71,6 +71,14 @@ if (isset($_SESSION['customer_id'])) {
       rel="stylesheet"
     />
     
+
+    <style>
+        .card:hover {
+            background-color: #FFD1E3; /* Replace with the shade of purple you prefer */
+            transition: background-color 0.3s ease; /* Smooth transition for the color change */
+            cursor: pointer; /* Changes the mouse cursor to indicate the item is clickable */
+        }
+    </style>
 </head>
 <body >
 
