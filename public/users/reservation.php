@@ -48,8 +48,8 @@ if(!$tasks) {
 
             <br>
             <div class="container-lg">
-               
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="position: fixed; bottom: 20px; right: 20px; z-index: 1030;">Book Now</button>
+                
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="position: fixed; bottom: 20px; right: 20px; z-index: 1030; font-size: 1rem; padding: 1.25rem 1.75rem;">Book Now</button>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
@@ -72,7 +72,7 @@ if(!$tasks) {
                 <?php endwhile; ?>
             </select>
             <div class="d-grid gap-2 mt-5">
-    <input type="submit" class="btn btn-primary btn-lg" value="Book Now" style="font-size: 1.5rem; padding: 1.25rem 1.75rem;">
+    <input type="submit" class="btn btn-primary btn-lg" value="Book Now">
 </div>
 
         </form>

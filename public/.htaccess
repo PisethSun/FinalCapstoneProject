@@ -1,0 +1,7 @@
+# .htaccess
+
+RewriteEngine On
+# Redirect all requests not pointing to a file or directory to index.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
