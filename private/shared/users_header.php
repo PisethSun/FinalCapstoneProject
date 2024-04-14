@@ -89,7 +89,8 @@ if (isset($_SESSION['customer_id'])) {
 
         <a href="index.php">Home</a>
          <a href="invoice.php">Invoice</a>
-         <a href="reservation.php">Reservation</a>
+         <a style="background-color: #add8e6; border-radius: 20px; color: white; padding: 5px 20px; text-decoration: none; display: inline-block;" href="reservation.php">Reservation</a>
+
         
 
           </nav>
