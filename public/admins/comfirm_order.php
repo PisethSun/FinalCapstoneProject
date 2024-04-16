@@ -77,7 +77,7 @@ if (!$done_result) {
 
 
 
-<div class="container-xxl">
+<div class="container-xl">
     <hr class="border border-primary border-3 opacity-75">
     <h2 class="fs-3" style="text-align: center;">Approved Invoices</h2>
     <table class="table table-striped table-info">

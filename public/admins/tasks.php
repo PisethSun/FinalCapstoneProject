@@ -3,8 +3,17 @@
 <?php $page_title = 'Manage Tasks'; ?>
 <?php include(SHARED_PATH . '/admins_header.php'); ?>
 
+<style>
+    .container-xl {
+        font-size: 1.25rem; /* Increase base font size */
+    }
+    .table th, .table td {
+        font-size: 1.2rem; /* Specific font size for table headers and cells */
+    }
+</style>
+
 <div class="container-xl">
-    <h2>Task Management</h2>
+    <h2 style="font-size: 2rem;">Task Management</h2> <!-- Larger heading -->
     <a href="task_create.php" class="btn btn-primary mb-3 btn-lg">Create New Task</a>
     <table class="table table-hover">
         <thead>

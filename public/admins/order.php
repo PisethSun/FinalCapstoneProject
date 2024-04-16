@@ -76,7 +76,7 @@ if (!$done_result) {
     exit("Database query failed."); // Handle the error appropriately
 }
 ?>
-<div class="container-xxl">
+<div class="container-xl">
     <hr class="border border-primary border-3 opacity-75">
     <h2 class="fs-3" style="text-align: center;">Invoices</h2>
     <table class="table table-striped table-info">
