@@ -253,4 +253,18 @@ function sanitize_and_collect_user_input($db, $post_data) {
 // Assuming process_signup is already defined as per previous instructions
 
 
-?>
+function updateCustomer($db, $user_id, $first_name, $last_name, $email) {
+  // Prepare the SQL statement
+  $stmt = $db->prepare("UPDATE customer SET customer_first_name = ?, customer_last_name = ?, customer_email = ? WHERE customer_id = ?");
+  // Bind the parameters to the prepared statement
+  $stmt->bind_param("sssi", $first_name, $last_name, $email, $user_id);
+  // Execute the statement and return the result
+  $stmt->execute();
+  // Check if the update was successful
+  $wasSuccessful = $stmt->affected_rows === 1;
+  // Close the statement
+  $stmt->close();
+  // Return the result of the update operation
+  return $wasSuccessful;
+}
+
