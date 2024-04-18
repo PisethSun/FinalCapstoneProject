@@ -21,8 +21,8 @@ if (isset($_SESSION['customer_id'])) {
     $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
-        // Concatenate the first and last name
-        $customerName = $row['customer_first_name'];
+        // Concatenate the first and last name and escape it
+        $customerName = htmlspecialchars($row['customer_first_name'] . ' ' . $row['customer_last_name']);
     }
 
     $stmt->close();
@@ -36,17 +36,17 @@ function displayNoInvoicesFound()
 function echoInvoiceDetailsWithTime($row)
 {
     echo "<tr>";
-    echo "<td>" . $row['invoice_id'] . "</td>";
-    echo "<td>" . $row['customer_name'] . "</td>";
-    echo "<td>" . $row['invoice_date'] . "</td>";
-    echo "<td>" . $row['invoice_status'] . "</td>";
-    echo "<td>" . $row['task_name'] . "</td>";
-    echo "<td>" . $row['task_description'] . "</td>";
-    echo "<td>" . $row['task_price'] . "</td>";
-    echo "<td>" . $row['task_estimate_time'] . "</td>";
+    echo "<td>" . htmlspecialchars($row['invoice_id']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['customer_name']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['invoice_date']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['invoice_status']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['task_name']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['task_description']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['task_price']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['task_estimate_time']) . "</td>";
     echo "<td>";
     echo "<form action='update_invoice_status.php' method='post'>";
-    echo "<input type='hidden' name='invoice_id' value='" . $row['invoice_id'] . "'>";
+    echo "<input type='hidden' name='invoice_id' value='" . htmlspecialchars($row['invoice_id']) . "'>";
     echo "<select name='invoice_status'>";
     echo "<option value='Accepted'>Accept</option>";
     echo "<option value='Declined'>Decline</option>";
@@ -107,7 +107,5 @@ if (!$done_result) {
         </tbody>
     </table>
 </div>
-
-
 
 <?php include(SHARED_PATH . '/admins_footer.php'); ?>
