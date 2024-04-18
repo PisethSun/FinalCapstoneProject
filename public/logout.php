@@ -6,6 +6,6 @@
 session_start();
 $_SESSION = array(); // Clear session variables
 session_destroy(); // Destroy the session
-redirect_to(url_for('/index.php')); // Redirect to login page
+redirect_to(url_for('/')); // Redirect to login page
 
 ?>

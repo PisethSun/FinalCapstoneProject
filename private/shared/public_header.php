@@ -54,7 +54,7 @@ if(!isset($page_title)) { $page_title = 'Welcome';}
          </nav>
          
          <!-- <a href="index.php" class="logo"><?=APP_NAME?><span>&trade;</span></a> -->
-         <a href="index.php" class="logo"><img src="images/icon/helenlogo.png" alt="Helen Logo" style="width: 120px; height: auto;"></a>
+         <a href="home.php" class="logo"><img src="images/icon/helenlogo.png" alt="Helen Logo" style="width: 120px; height: auto;"></a>
 
 
 
