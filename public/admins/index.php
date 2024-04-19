@@ -1,39 +1,64 @@
-<?php require_once('../../private/initialize.php'); ?>
-<?php require_login(); ?>
-<?php include(SHARED_PATH . '/admins_header.php'); ?>
 <?php
-// Check if the user is logged in
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: ../login.php"); // Redirect to login page if not logged in
-    exit;
-}
+require_once('../../private/initialize.php');
+$page_title = 'Welcome Admins';
+include(SHARED_PATH .'/admins_header.php');
+require_login();
 
-$customerName = "Guest"; // Default name in case something goes wrong
+// Fetch total number of customers
+$total_customers_query = "SELECT COUNT(*) AS total_customers FROM customer";
+$total_customers_result = mysqli_query($db, $total_customers_query);
+$total_customers = mysqli_fetch_assoc($total_customers_result)['total_customers'];
 
-if(isset($_SESSION['customer_id'])) {
-    $customer_id = $_SESSION['customer_id'];
+// Fetch total number of reservations
+$total_reservations_query = "SELECT COUNT(*) AS total_reservations FROM reservation";
+$total_reservations_result = mysqli_query($db, $total_reservations_query);
+$total_reservations = mysqli_fetch_assoc($total_reservations_result)['total_reservations'];
 
-    // Fetch the customer's name from the database
-    $stmt = $db->prepare("SELECT customer_first_name, customer_last_name FROM customer WHERE customer_id = ?");
-    $stmt->bind_param("i", $customer_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Existing invoices fetching code
+// ...
+?>
 
-    if ($row = $result->fetch_assoc()) {
-        // Concatenate the first and last name
-        $customerName = $row['customer_first_name'];
-    }
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center bg-primary text-white mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Customers</h5>
+                    <p class="card-text fs-4"><?php echo $total_customers; ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center bg-success text-white mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Reservations</h5>
+                    <p class="card-text fs-4"><?php echo $total_reservations; ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+    <a href="create.php" class="text-decoration-none"> <!-- Makes the entire card a link -->
+        <div class="card text-center bg-danger text-white mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Add New Users</h5>
+                <p class="card-text fs-4">Add Here</p>
+            </div>
+        </div>
+    </a>
+</div>
 
-    $stmt->close();
-}
+        <!-- You might want to add more cards here for other information -->
+    </div>
+</div>
 
-
-
-
-
-
-
-
-
-
+<!-- The existing table and other page content -->
+<div class="d-flex justify-content-center">
+    <div class="container-lg fs-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Table and other content as already implemented -->
+            </div>
+        </div>
+    </div>
+</div>
 

@@ -31,41 +31,59 @@ if(isset($_SESSION['customer_id'])) {
 ?>
 
 <!-- HTML form for creating a new customer or account -->
-<div class="uk-container uk-container-small">
-    <h2>Create New Customer</h2>
-    <form action="create_process.php" method="POST">
-        <div class="form-group">
-            <label for="customer_first_name">First Name:</label>
-            <input type="text" class="form-control" id="customer_first_name" name="customer_first_name" maxlength="50" style="width: 300px;">
+<div class="container-md mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Create New Customer</h2>
+            <form action="create_process.php" method="POST">
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-4">
+                        <label for="customer_first_name">First Name:</label>
+                        <input type="text" class="form-control" id="customer_first_name" name="customer_first_name" maxlength="50" required>
+                    </div>
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-4">
+                        <label for="customer_last_name">Last Name:</label>
+                        <input type="text" class="form-control" id="customer_last_name" name="customer_last_name" maxlength="50" required>
+                    </div>
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-4">
+                        <label for="customer_email">Email:</label>
+                        <input type="email" class="form-control" id="customer_email" name="customer_email" maxlength="100" required>
+                    </div>
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-4">
+                        <label for="customer_phone">Phone:</label>
+                        <input type="text" class="form-control" id="customer_phone" name="customer_phone" maxlength="20" required>
+                    </div>
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-4">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username" maxlength="255" required>
+                    </div>
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-4">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" maxlength="255" required>
+                    </div>
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-4">
+                        <label for="confirm_password">Confirm Password:</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="255" required>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="customer_last_name">Last Name:</label>
-            <input type="text" class="form-control" id="customer_last_name" name="customer_last_name" maxlength="50" style="width: 300px;">
-        </div>
-        <div class="form-group">
-            <label for="customer_email">Email:</label>
-            <input type="email" class="form-control" id="customer_email" name="customer_email" maxlength="100" style="width: 300px;">
-        </div>
-        <div class="form-group">
-            <label for="customer_phone">Phone:</label>
-            <input type="text" class="form-control" id="customer_phone" name="customer_phone" maxlength="20" style="width: 300px;">
-        </div>
-        <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" id="username" name="username" maxlength="255" style="width: 300px;">
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" maxlength="255" style="width: 300px;">
-        </div>
-        <div class="form-group">
-            <label for="confirm_password">Confirm Password:</label>
-            <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="255" style="width: 300px;">
-        </div>
-        
-        <div >
-            <br>
-        <button type="submit" class="btn btn-primary ">Submit</button>
-        </div>
-    </form>
+    </div>
 </div>
+
+

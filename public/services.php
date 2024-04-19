@@ -33,10 +33,7 @@
    <h1 class="title" style="font-size: 3rem; color: black; font-family: bold;">Popular Options</h1>
 
 
-   <br>
-    <div class="box">
-   <hr style="color: black;">
-</div>
+  
 
    <div class="box-container" >
 

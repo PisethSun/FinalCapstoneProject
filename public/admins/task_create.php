@@ -30,27 +30,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 include(SHARED_PATH . '/admins_header.php');
 ?>
 
-<div class="container mt-5">
-    <h2>Create New Task</h2>
+<div class="container-md mt-4">
+<h2 class="text-center">Create New Task</h2>
     <form action="task_create.php" method="post">
-        <div class="mb-3">
-            <label for="task_name" class="form-label">Task Name</label>
-            <input type="text" class="form-control" id="task_name" name="task_name" required>
+        <div class="row mb-3 justify-content-center">
+            <div class="col-md-4">
+                <label for="task_name" class="form-label">Task Name</label>
+                <input type="text" class="form-control" id="task_name" name="task_name" required>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="task_description" class="form-label">Description</label>
-            <textarea class="form-control" id="task_description" name="task_description" rows="3" required></textarea>
+        <div class="row mb-3 justify-content-center">
+            <div class="col-md-4">
+                <label for="task_description" class="form-label">Description</label>
+                <textarea class="form-control" id="task_description" name="task_description" rows="3" required></textarea>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="task_price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="task_price" name="task_price" step="0.01" required>
+        <div class="row mb-3 justify-content-center">
+            <div class="col-md-4">
+                <label for="task_price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="task_price" name="task_price" step="0.01" required>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="task_estimate_time" class="form-label">Estimated Time (minutes)</label>
-            <input type="number" class="form-control" id="task_estimate_time" name="task_estimate_time" required>
+        <div class="row mb-3 justify-content-center">
+            <div class="col-md-4">
+                <label for="task_estimate_time" class="form-label">Estimated Time (minutes)</label>
+                <input type="number" class="form-control" id="task_estimate_time" name="task_estimate_time" required>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
     </form>
 </div>
+
+
+
 
 <?php include(SHARED_PATH . '/admins_footer.php'); ?>

@@ -202,29 +202,32 @@
 function process_signup($db, $username, $email, $password, $firstName, $lastName, $phone) {
   $errors = []; // Initialize an array to collect potential errors
 
-  $password = password_hash($password, PASSWORD_DEFAULT);
-  $accessLevel = 1;
-  $accountStatus = 1;
-  $creationDate = date('Y-m-d H:i:s');
-  $customerEmail = $email;
+  $password = password_hash($password, PASSWORD_DEFAULT); // Hashing the password
+  $accessLevel = 1; // Default access level for new accounts
+  $accountStatus = 1; // Default account status for new accounts
 
+  // Start a database transaction
   mysqli_begin_transaction($db);
+
   try {
-      $stmt = mysqli_prepare($db, "INSERT INTO account (account_username, account_email, account_password, access_level, account_status, account_creation_date) VALUES (?, ?, ?, ?, ?, ?)");
-      mysqli_stmt_bind_param($stmt, "sssiii", $username, $email, $password, $accessLevel, $accountStatus, $creationDate);
+      // Insert into account table
+      $stmt = mysqli_prepare($db, "INSERT INTO account (account_username, account_email, account_password, access_level, account_status) VALUES (?, ?, ?, ?, ?)");
+      mysqli_stmt_bind_param($stmt, "sssii", $username, $email, $password, $accessLevel, $accountStatus);
       mysqli_stmt_execute($stmt);
+      $accountId = mysqli_insert_id($db); // Get the last inserted ID for future use
 
-      $accountId = mysqli_insert_id($db);
-
+      // Insert into customer table
       $stmt = mysqli_prepare($db, "INSERT INTO customer (customer_first_name, customer_last_name, customer_email, customer_phone) VALUES (?, ?, ?, ?)");
-      mysqli_stmt_bind_param($stmt, "ssss", $firstName, $lastName, $customerEmail, $phone);
+      mysqli_stmt_bind_param($stmt, "ssss", $firstName, $lastName, $email, $phone);
       mysqli_stmt_execute($stmt);
 
+      // Commit the transaction if all operations succeed
       mysqli_commit($db);
       mysqli_stmt_close($stmt);
 
       return ['success' => true];
   } catch (Exception $e) {
+      // Rollback the transaction in case of an error
       mysqli_rollback($db);
       mysqli_stmt_close($stmt);
 

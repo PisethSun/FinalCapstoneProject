@@ -45,17 +45,18 @@ function echoInvoiceDetailsWithTime($row)
     echo "<td>" . htmlspecialchars($row['task_price']) . "</td>";
     echo "<td>" . htmlspecialchars($row['task_estimate_time']) . "</td>";
     echo "<td>";
-    echo "<form action='update_invoice_status.php' method='post'>";
+    echo "<form action='update_invoice_status.php' method='post' style='display: flex; align-items: center;'>";
     echo "<input type='hidden' name='invoice_id' value='" . htmlspecialchars($row['invoice_id']) . "'>";
-    echo "<select name='invoice_status'>";
+    echo "<select class=' ml-2' name='invoice_status' class='form-control'>";
     echo "<option value='Accepted'>Accept</option>";
     echo "<option value='Declined'>Decline</option>";
     echo "</select>";
-    echo "<button type='submit' name='submit' class='btn btn-primary'>Update</button>";
+    echo "<button type='submit' name='submit' class='btn btn-primary ml-2'>Update</button>"; // Added ml-2 for spacing
     echo "</form>";
     echo "</td>";
     echo "</tr>";
 }
+
 
 // Fetch invoice details including customer, task, and price
 $query = "SELECT i.invoice_id, CONCAT(c.customer_first_name, ' ', c.customer_last_name) AS customer_name, i.invoice_date, i.invoice_status, t.task_name, t.task_description, t.task_price, t.task_estimate_time

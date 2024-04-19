@@ -57,7 +57,7 @@ if (is_post_request() && $_POST['submit']) {
             $success_message = "Sign up was successful. Redirecting to login...";
             echo "<script>
                     alert('{$success_message}');
-                    window.location.href='index.php';
+                    window.location.href='home.php';
                   </script>";
             exit;
         }
