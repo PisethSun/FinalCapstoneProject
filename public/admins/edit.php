@@ -2,8 +2,9 @@
 <?php require_login(); ?>
 <?php include(SHARED_PATH . '/admins_header.php'); ?>
 
-<div class="uk-container uk-container-xsmall">
-    <h2>Edit User</h2>
+<div class="uk-container uk-container-xsmall uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
+    <div class="uk-width-1-1 uk-width-1-2@s">
+        <h2 class="uk-text-center">Edit User</h2>
 
     <?php
     // Check if user ID is provided in the URL
@@ -46,23 +47,22 @@
     ?>
 
     <!-- HTML form for editing user information -->
-    <form action="edit.php?id=<?php echo $user_id; ?>" method="post">
-        <div class="form-group">
-            <label for="first_name" class="uk-text-large">First Name</label>
-            <input type="text" class="form-control uk-text-large" id="first_name" name="first_name" value="<?php echo htmlspecialchars($user['customer_first_name']); ?>" maxlength="50" style="width: 200px;">
-        </div>
-        <div class="form-group">
-            <label for="last_name" class="uk-text-large">Last Name</label>
-            <input type="text" class="form-control uk-text-large" id="last_name" name="last_name" value="<?php echo htmlspecialchars($user['customer_last_name']); ?>" maxlength="50" style="width: 200px;">
-        </div>
-        <div class="form-group">
-            <label for="email" class="uk-text-large">Email</label>
-            <input type="email" class="form-control uk-text-large" id="email" name="email" value="<?php echo htmlspecialchars($user['customer_email']); ?>" maxlength="100" style="width: 300px;">
-        </div>
+    <form action="edit.php?id=<?php echo $user_id; ?>" method="post" class="uk-form-stacked">
+            <div class="uk-margin">
+                <label for="first_name" class="uk-form-label">First Name</label>
+                <input type="text" class="uk-input" id="first_name" name="first_name" value="<?php echo htmlspecialchars($user['customer_first_name']); ?>" maxlength="50">
+            </div>
+            <div class="uk-margin">
+                <label for="last_name" class="uk-form-label">Last Name</label>
+                <input type="text" class="uk-input" id="last_name" name="last_name" value="<?php echo htmlspecialchars($user['customer_last_name']); ?>" maxlength="50">
+            </div>
+            <div class="uk-margin">
+                <label for="email" class="uk-form-label">Email</label>
+                <input type="email" class="uk-input" id="email" name="email" value="<?php echo htmlspecialchars($user['customer_email']); ?>" maxlength="100">
+            </div>
 
-        <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
+            <div class="uk-text-center uk-margin">
+                <button type="submit" class="uk-button uk-button-primary">Submit</button>
+            </div>
+        </form>
 </div>
-<?php include(SHARED_PATH . '/admins_footer.php'); ?>
