@@ -1,4 +1,35 @@
-<footer class="text-white text-center text-lg-start bg-light.bg-gradient fs-5">
+<div class="button-container">
+  <!-- Phone Button -->
+  <a href="tel:123-456-7890" class="button" title="Call us!">
+    <span class="icon">📞</span>
+  </a>
+<noscript>Enable JavaScript to ensure <a href="https://userway.org">website accessibility</a></noscript>
+
+  
+  <!-- Google Translate Widget -->
+  <div id="google_translate_element"></div>
+</div>
+
+<!-- Google Translate Script -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- UserWay Accessibility Widget Script -->
+<script>
+(function(){
+  var s = document.createElement("script");
+  s.setAttribute("data-account", "CAQ9sEFDAm");
+  s.setAttribute("src", "https://cdn.userway.org/widget.js");
+  document.body.appendChild(s);
+})();
+</script>
+
+
+<footer class="text-white text-center text-lg-start bg-light.bg-gradient fs-3">
     <!-- Grid container -->
     <div class="container p-4 ">
       <!--Grid row-->
@@ -57,7 +88,7 @@
         <!--Grid column-->
   
         <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 fs-3">
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 fs-1">
           <h5 class="text-uppercase mb-4">Opening hours</h5>
   
           <table class="table text-center text-white ">
@@ -84,6 +115,8 @@
 
 
 
+
+    <p id="copyright" style="text-align: center; line-height:80px; " >© Helen's Nails & Spa, 2024</p>
 
 
     </footer>

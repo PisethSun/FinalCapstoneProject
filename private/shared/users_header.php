@@ -70,15 +70,46 @@ if (isset($_SESSION['customer_id'])) {
       href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.0.0/mdb.min.css"
       rel="stylesheet"
     />
-    
-
     <style>
-        .card:hover {
+  .button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    background-color: #FFD1E3; /* Adjust color as needed */
+    color: black; /* Adjust text color as needed */
+    border-radius: 50%; /* This makes it round */
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    text-decoration: none;
+  }
+
+  .button:hover {
+    background-color: lightgreen; /* Color when hovered */
+  }
+
+  .icon {
+    font-size: 20px; /* Adjust icon size as needed */
+  }
+
+  .card:hover {
             background-color: #FFD1E3; /* Replace with the shade of purple you prefer */
             transition: background-color 0.3s ease; /* Smooth transition for the color change */
             cursor: pointer; /* Changes the mouse cursor to indicate the item is clickable */
         }
-    </style>
+</style>
+
+   
 </head>
 <body >
 

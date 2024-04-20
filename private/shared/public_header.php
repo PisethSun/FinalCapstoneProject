@@ -62,7 +62,8 @@ if(!isset($page_title)) { $page_title = 'Welcome';}
          <a href="login.php">Login</a>
          <a href="signup.php">Sign Up</a>
     
-      
+
+         
 
       </nav>
 
@@ -73,5 +74,39 @@ if(!isset($page_title)) { $page_title = 'Welcome';}
       </div>
    </div>
 
+   <style>
+  .button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    background-color: yellow; /* Adjust color as needed */
+    color: black; /* Adjust text color as needed */
+    border-radius: 50%; /* This makes it round */
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    text-decoration: none;
+  }
+
+  .button:hover {
+    background-color: gold; /* Color when hovered */
+  }
+
+  .icon {
+    font-size: 20px; /* Adjust icon size as needed */
+  }
+</style>
 </header>
+
+
 
