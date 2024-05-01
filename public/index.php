@@ -1,12 +1,10 @@
 <?php
-// index.php
-
 require_once('../private/initialize.php');
 
-// Get the path from the URL
+
 $path = $_GET['path'] ?? 'home';
 
-// Map the path to a function or include a file
+
 switch ($path) {
     case 'home':
         include('home.php');
@@ -17,11 +15,11 @@ switch ($path) {
     case 'gallery':
         include('gallery.php');
         break;
-    // Add other cases for each route
+    
     default:
-        include('404.php'); // Create a 404.php for handling not found pages
+        include('404.php'); 
         break;
 }
 
-// Rest of the shared footer
+
 include(SHARED_PATH . '/users_footer.php');
